@@ -1,24 +1,18 @@
-import json
-with open('products.json', 'r', encoding='utf-8') as file:
-    data = json.load(file)
+class Restaurant:
+    def __init__(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
 
-new_product = {
-    "name": input("Введите название товара: "),
-    "price": input("Введите стоимость товара: "),
-    "available": input("Товар в наличие? "),
-    "weight": int(input("Введите вес товара: "))
-}
-data["products"].append(new_product)
-with open('spis.json', 'w', encoding='utf-8') as file:
-    json.dump(data, file, indent=4)
-with open('spis.json', 'r', encoding='utf-8') as file:
-    new_data = json.load(file)
+    def describe_restaurant(self):
+        print(f"Ресторан {self.restaurant_name} предлагает кухню типа {self.cuisine_type}.")
 
-for products in new_data['products']:
-    print(f'Название: {products["name"]}'
-          '\n' f' Цена: {products["price"]}'
-          '\n' f' Вес: {products["weight"]}')
-    if products['available']:
-        print("В Наличии")
-    else:
-        print('Нет в наличии')
+    def open_restaurant(self):
+        print("Ресторан открыт!")
+
+restaurant1 = Restaurant("Италиано", "итальянская")
+restaurant2 = Restaurant("Суши-Мастер", "японская")
+restaurant3 = Restaurant("СтейкХаус", "американская")
+
+restaurant1.describe_restaurant()
+restaurant2.describe_restaurant()
+restaurant3.describe_restaurant()
